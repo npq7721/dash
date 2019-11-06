@@ -1145,8 +1145,9 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
     } else {
         dDiff = ConvertBitsToDouble(nPrevBits);
     }
-
-    if (nPrevHeight < 5465) {
+    if(nPrevHeight == 5) {
+      nSubsidyBase = 10000000;
+    } else if (nPrevHeight < 5465) {
         // Early ages...
         // 1111/((x+1)^2)
         nSubsidyBase = (1111.0 / (pow((dDiff+1.0),2.0)));
